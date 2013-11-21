@@ -1,7 +1,29 @@
 @import "bootstrap";
 
-//global classes
-.header-offset { margin-top: 60px; }
+/* universal */
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
 
 //header nav styles
 #header-nav {
