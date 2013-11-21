@@ -1,5 +1,19 @@
 @import "bootstrap";
 
-#home, #help {
-	margin-top: 60px;
+//global classes
+.header-offset { margin-top: 60px; }
+
+//header nav styles
+#header-nav {
+	#logo { display:block; position:relative; top:5px; }
+}
+
+//home page styles
+#home {
+
+}
+
+//help page styles
+#help {
+
 }
