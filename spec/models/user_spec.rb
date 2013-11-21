@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
 
-  before { @user = User.new(username: "Example User", email: "user@example.com") }
+  before { @user = User.new(username: "user1", email: "user1@example.com") }
 
   subject { @user }
 
@@ -18,6 +18,35 @@ describe User do
 
 	describe "when username is too long" do
   	before { @user.username = "a" * 26 }
+  	it { should_not be_valid }
+  end
+
+  describe "when username format is invalid" do
+    it "should be invalid" do
+      sample_usernames = %w[_abc abc__ 3abc abc$ @abc]
+      sample_usernames.each do |invalid_username|
+        @user.username = invalid_username
+        expect(@user).not_to be_valid
+      end
+    end
+  end
+
+  describe "when username format is valid" do
+    it "should be valid" do
+      sample_usernames = %w[abc_ abc123 abc_123 a1b2c3 a_b_c a_1_b_2_c_3]
+      sample_usernames.each do |valid_username|
+        @user.username = valid_username
+        expect(@user).to be_valid
+      end
+    end
+  end
+
+  describe "when username is already taken" do
+  	before do
+  		user_with_same_username = @user.dup
+  		user_with_same_username.save
+  	end
+
   	it { should_not be_valid }
   end
 
