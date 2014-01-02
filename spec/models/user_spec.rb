@@ -13,8 +13,19 @@ describe User do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:author) }
 
   it { should be_valid }
+  it { should_not be_author }
+
+  describe "with author attribute set to 'true'" do
+    before do
+      @user.save!
+      @user.toggle!(:author)
+    end
+
+    it { should be_author }
+  end
 
   describe "when username is not present" do
   	before { @user.username = " " }
