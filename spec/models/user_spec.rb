@@ -8,6 +8,9 @@ describe User do
 
   it { should respond_to(:username) }
   it { should respond_to(:email) }
+  it { respond_to(:password_digest) }
+  it { respond_to(:password) }
+  it { respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
 
   it { should be_valid }
